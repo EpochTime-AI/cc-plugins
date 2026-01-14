@@ -1,0 +1,17 @@
+# Crawl artifacts
+docs-full/
+docs-crawl/
+*-docs-full/
+*-crawl/
+
+# Config files
+*-config.yaml
+sitemap.xml
+doc-urls.txt
+
+# Temporary files
+*.tmp
+.DS_Store
+
+# System files
+Thumbs.db

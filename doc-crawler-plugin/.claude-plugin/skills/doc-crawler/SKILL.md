@@ -1,6 +1,6 @@
 ---
 name: doc-crawler
-description: Crawl and extract documentation from websites using inform tool - handles sitemaps, filters doc URLs, and organizes content into clean markdown skills
+description: This skill should be used when the user asks to "crawl documentation", "extract docs from website", "convert website to markdown", "download documentation site", "scrape docs", "use inform tool", "create skill from docs", or wants guidance on systematically crawling documentation websites using inform tool, handling sitemaps, filtering URLs, and organizing content into structured markdown skills.
 ---
 
 # Documentation Crawler Skill
@@ -307,11 +307,11 @@ rm -rf atlas-docs-full/ atlas-config.yaml
 
 ## Advanced Techniques
 
-For advanced scenarios like large sites, dynamic content, authentication, and handling special cases, see [advanced.md](./advanced.md).
+For advanced scenarios like large sites, dynamic content, authentication, and handling special cases, see [references/advanced.md](references/advanced.md).
 
 ## Common Issues & Troubleshooting
 
-For detailed troubleshooting including robots.txt blocking, rate limiting, incomplete crawls, and poor content extraction, see [troubleshooting.md](./troubleshooting.md).
+For detailed troubleshooting including robots.txt blocking, rate limiting, incomplete crawls, and poor content extraction, see [references/troubleshooting.md](references/troubleshooting.md).
 
 ## Resources
 
