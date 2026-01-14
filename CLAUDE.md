@@ -4,7 +4,11 @@
 
 ## Repository Overview
 
-This repository serves as a Claude Code plugin marketplace, providing a curated collection of plugins to enhance AI-powered development workflows. The marketplace follows the official Claude Code marketplace specification and can be added to Claude Code using Git.
+This repository serves as a Claude Code plugin marketplace, providing a curated collection of plugins to enhance AI-powered development workflows. The marketplace follows the official Claude Code marketplace specification and **is distributed via GitHub** to make it easily accessible to Claude Code users worldwide.
+
+### GitHub Distribution
+
+This marketplace is hosted on GitHub at **[github.com/EpochTime-AI/cc-plugins](https://github.com/EpochTime-AI/cc-plugins)**. Users can add this marketplace to Claude Code using Git, and the marketplace will automatically resolve plugin sources from this GitHub repository.
 
 ### Repository Structure
 
@@ -13,11 +17,12 @@ cc-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace manifest (REQUIRED)
 ├── doc-crawler-plugin/            # Plugin: Documentation crawler
-│   ├── plugin.json
+│   ├── .claude-plugin/
+│   │   └── plugin.json
 │   ├── README.md
 │   └── skills/
 │       └── doc-crawler.md
-├── claude.md                      # This file - development guide
+├── CLAUDE.md                      # This file - development guide
 ├── README.md                      # User-facing documentation
 └── LICENSE
 ```
@@ -111,14 +116,19 @@ For plugins hosted on other Git platforms:
 
 ## Adding New Plugins to This Marketplace
 
-### Step 1: Create Plugin Directory
+### Step 1: Create Plugin Structure
+
+Use the plugin-dev skill for guided creation:
 
 ```bash
-# Create plugin directory structure
-mkdir -p new-plugin/{skills,commands,agents,hooks}
+/plugin-dev:create-plugin
+```
 
-# Create plugin manifest
-cat > new-plugin/plugin.json << 'EOF'
+Or manually create the plugin directory:
+
+```bash
+mkdir -p new-plugin/.claude-plugin
+cat > new-plugin/.claude-plugin/plugin.json << 'EOF'
 {
   "name": "new-plugin",
   "version": "1.0.0",
@@ -130,40 +140,24 @@ EOF
 
 ### Step 2: Update Marketplace Manifest
 
-Edit `.claude-plugin/marketplace.json` and add your plugin:
+Edit `.claude-plugin/marketplace.json` and add your plugin to the `plugins` array:
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "doc-crawler-plugin",
-      "source": "./doc-crawler-plugin",
-      "description": "Documentation crawler plugin",
-      "version": "1.0.0"
-    },
-    {
-      "name": "new-plugin",
-      "source": "./new-plugin",
-      "description": "Your new plugin description",
-      "version": "1.0.0"
-    }
-  ]
+  "name": "new-plugin",
+  "source": "./new-plugin",
+  "description": "Your new plugin description",
+  "version": "1.0.0"
 }
 ```
 
-### Step 3: Validate
+### Step 3: Validate and Commit
 
 ```bash
-# Validate marketplace manifest
+# Validate
 claude plugin validate .
 
-# Should output:
-# ✔ Validation passed
-```
-
-### Step 4: Commit and Push
-
-```bash
+# Commit and push
 git add .
 git commit -m "Add new-plugin to marketplace"
 git push
@@ -201,21 +195,21 @@ The `claude plugin validate` command checks:
 
 ### Automated Validation (Pre-commit Hook)
 
-This repository includes a pre-commit hook that automatically validates the marketplace manifest before each commit. See `.git/hooks/pre-commit`.
+This repository includes a pre-commit hook that automatically validates the marketplace manifest before each commit.
 
 ## Using This Marketplace
 
-### Add Marketplace to Claude Code
+Users can add this marketplace to Claude Code using Git (see **GitHub Distribution** section above for details):
 
 ```bash
-# Via SSH
-claude plugin marketplace add git@github.com:EpochTime-AI/cc-plugins.git
+# Add marketplace to Claude Code
+claude plugin marketplace add EpochTime-AI/cc-plugins
 
-# Via HTTPS
+# Or use the full GitHub URL
 claude plugin marketplace add https://github.com/EpochTime-AI/cc-plugins.git
 ```
 
-### Install Plugins from Marketplace
+Once added, users can install plugins:
 
 ```bash
 # List available plugins
@@ -245,14 +239,19 @@ ls -la .claude-plugin/marketplace.json
 - Cannot use `..` in paths
 - For objects, `source` must be `"github"` or `"url"`
 
-### Issue: Validation fails
+### Issue: Plugin shows in marketplace but fails to install (404)
 
-**Cause**: Invalid JSON or missing required fields
+**Cause**: Common causes include:
+- Plugin source path is incorrect in marketplace.json
+- Plugin directory or .claude-plugin/plugin.json doesn't exist
+- Files not committed or pushed to GitHub
+- Relative path uses `..` instead of `./`
 
-**Solution**: Run validation and fix errors:
-```bash
-claude plugin validate .
-```
+**Solution**:
+1. Verify plugin directory exists locally
+2. Check marketplace.json references correct path (must start with `./`)
+3. Ensure all files are committed and pushed to GitHub
+4. Run validation: `claude plugin validate .`
 
 ## Commit Message Convention
 
@@ -287,6 +286,8 @@ Specify which component is affected:
 - `marketplace` - Marketplace manifest changes
 - `doc-crawler-plugin` - doc-crawler-plugin changes
 - `plugin-name` - Specific plugin changes
+
+Note: Use `CLAUDE.md` when referring to this development guide in commit messages
 
 ### Subject
 
@@ -325,42 +326,15 @@ git commit -m "chore(deps): update plugin-dev version"
 
 ## Development Workflow
 
-### 1. Create New Plugin
+### Quick Summary
 
-```bash
-# Use the plugin-dev skill
-/plugin-dev:create-plugin
-```
+1. Create plugin using `/plugin-dev:create-plugin` or manually
+2. Add to `.claude-plugin/marketplace.json`
+3. Validate with `claude plugin validate .`
+4. Commit and push to GitHub
+5. Users can then install with `claude plugin install plugin-name`
 
-### 2. Test Locally
-
-```bash
-# Install plugin locally for testing
-cp -r new-plugin ~/.claude/plugins/
-
-# Test the plugin
-claude code
-```
-
-### 3. Add to Marketplace
-
-```bash
-# Update marketplace.json
-# Validate
-claude plugin validate .
-
-# Commit
-git add .
-git commit -m "Add new-plugin"
-git push
-```
-
-### 4. Users Install
-
-```bash
-# Users can now install from marketplace
-claude plugin install new-plugin
-```
+See **Adding New Plugins to This Marketplace** section above for detailed steps.
 
 ## Getting Help with Plugin Development
 
@@ -388,6 +362,45 @@ For any questions about plugin development or plugin architecture:
    - [Claude Code Documentation](https://code.claude.com/docs)
    - [Plugin Development Guide](https://code.claude.com/docs/en/plugins)
 
+### Plugin Validation and Issue Resolution
+
+If you encounter problems with your plugin installation or functionality:
+
+1. **Validate your plugin structure**:
+   ```bash
+   # Validate the entire marketplace
+   claude plugin validate .
+
+   # Validate a specific plugin
+   claude plugin validate ./doc-crawler-plugin
+   ```
+
+2. **Use plugin-dev validation agents and skills**: For detailed analysis and automated validation:
+
+   The official `plugin-dev` plugin provides specialized agents and skills that should be used during plugin development, checking, and debugging:
+
+   - **plugin-validator agent**: Use this to get comprehensive plugin validation with detailed error reporting
+   - **plugin-dev skills**: Access development guidance and best practices when creating or troubleshooting plugins
+
+   Ask Claude to use these tools when you need detailed diagnostics or during plugin development workflows.
+
+3. **Check the plugin installation**:
+   ```bash
+   # List installed plugins
+   claude plugin list
+
+   # Check plugin-dev status
+   claude plugin list | grep plugin-dev
+   ```
+
+4. **Debug common issues**:
+   - Verify `.claude-plugin/plugin.json` is valid JSON
+   - Ensure all component paths exist (skills/, commands/, etc.)
+   - Check that all plugin names follow kebab-case convention
+   - Verify marketplace.json source paths are relative (start with `./`)
+
+   When stuck, use `plugin-validator` agent from plugin-dev to get detailed diagnostics.
+
 ## Plugin Development Best Practices
 
 ### Plugin Structure
@@ -396,85 +409,33 @@ Each plugin should follow this structure:
 
 ```
 plugin-name/
-├── plugin.json              # Plugin manifest (REQUIRED)
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest (REQUIRED)
 ├── README.md                # Plugin documentation
 ├── skills/                  # Skills (.md files)
-│   └── skill-name.md
 ├── commands/                # Commands (.md files)
-│   └── command-name.md
 ├── agents/                  # Agents (.md files)
-│   └── agent-name.md
-└── hooks/                   # Hooks (.md files)
-    └── hook-name.md
+└── hooks/                   # Hooks configuration
 ```
 
 ### Plugin Manifest (plugin.json)
 
-The `plugin.json` file is the core manifest for your plugin. It defines metadata and component discovery.
+The plugin manifest in `.claude-plugin/plugin.json` defines metadata and component discovery.
 
-#### Basic Structure
+**Required fields**:
+- `name` (string): Plugin identifier, lowercase with hyphens
+- `version` (string): Semantic version (e.g., "1.0.0")
+- `description` (string): Plugin description
 
-```json
-{
-  "name": "plugin-name",
-  "version": "1.0.0",
-  "description": "Clear, concise description",
-  "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
-  },
-  "repository": "https://github.com/owner/repo"
-}
-```
+**Optional fields**:
+- `author` (string | object): Author information
+- `repository` (string): Git repository URL
+- `skills` (string | object): Path to skills directory (e.g., `"./skills/"`)
+- `commands` (string | object): Path to commands directory
+- `agents` (string | object): Path to agents directory
+- `hooks` (string | object): Path to hooks configuration
 
-#### Required Fields
-
-- **`name`** (string): Plugin identifier, lowercase with hyphens
-- **`version`** (string): Semantic version (e.g., "1.0.0")
-- **`description`** (string): Clear, concise plugin description
-
-#### Optional Fields
-
-- **`author`** (string | object): Author name or object with `name` and `email`
-- **`repository`** (string): Git repository URL
-- **`skills`** (string | object): Path to skills directory or skill definitions
-- **`commands`** (string | object): Path to commands directory or command definitions
-- **`agents`** (string | object): Path to agents directory or agent definitions
-- **`hooks`** (string | object): Path to hooks directory or hook definitions
-
-#### Component Discovery
-
-**Auto-discovery (Recommended)**:
-```json
-{
-  "name": "my-plugin",
-  "version": "1.0.0",
-  "description": "My plugin",
-  "skills": "./skills/",
-  "commands": "./commands/",
-  "agents": "./agents/",
-  "hooks": "./hooks/"
-}
-```
-
-Claude Code will automatically discover all `.md` files in these directories.
-
-**Explicit Definition**:
-```json
-{
-  "name": "my-plugin",
-  "version": "1.0.0",
-  "description": "My plugin",
-  "skills": {
-    "skill-name": {
-      "description": "Skill description",
-      "path": "skills/skill-name.md"
-    }
-  }
-}
-```
-
-Use explicit definition when you need fine-grained control over component metadata.
+Claude Code automatically discovers all `.md` files in the specified component directories.
 
 ### Skill Guidelines
 

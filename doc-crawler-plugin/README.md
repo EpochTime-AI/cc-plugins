@@ -20,14 +20,14 @@ This plugin provides a systematic workflow for converting online documentation i
 ### Option 1: Install from GitHub
 
 ```bash
-claude code plugin install https://github.com/yourusername/cc-plugins/doc-crawler-plugin
+claude code plugin install https://github.com/EpochTime-AI/cc-plugins/doc-crawler-plugin
 ```
 
 ### Option 2: Manual Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cc-plugins.git
+git clone https://github.com/EpochTime-AI/cc-plugins.git
 cd cc-plugins
 
 # Copy plugin to Claude Code plugins directory
