@@ -1,0 +1,13 @@
+{
+  "name": "doc-crawler",
+  "version": "1.0.0",
+  "description": "Documentation crawler plugin for Claude Code - crawl and convert documentation websites into well-structured skills using inform tool",
+  "author": "c_w_xiaohei",
+  "repository": "https://github.com/yourusername/cc-plugins",
+  "skills": {
+    "doc-crawler": {
+      "description": "Crawl and extract documentation from websites using inform tool - handles sitemaps, filters doc URLs, and organizes content into clean markdown skills",
+      "path": "skills/doc-crawler.md"
+    }
+  }
+}
