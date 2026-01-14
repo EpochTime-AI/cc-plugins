@@ -254,6 +254,75 @@ ls -la .claude-plugin/marketplace.json
 claude plugin validate .
 ```
 
+## Commit Message Convention
+
+This repository follows a standardized commit message format to maintain clear, organized history and enable better changelog automation.
+
+### Format
+
+```
+<type>(<scope>): <subject>
+
+<body>
+```
+
+### Type
+
+Must be one of:
+
+- **feat**: A new feature or capability
+- **fix**: A bug fix
+- **docs**: Documentation changes only (README, claude.md, etc.)
+- **refactor**: Code refactoring without feature changes
+- **style**: Code style changes (formatting, missing semicolons, etc.)
+- **perf**: Performance improvements
+- **test**: Adding or updating tests
+- **chore**: Changes to build, dependencies, configs, etc.
+- **ci**: Changes to CI/CD configuration
+
+### Scope (Optional)
+
+Specify which component is affected:
+
+- `marketplace` - Marketplace manifest changes
+- `doc-crawler-plugin` - doc-crawler-plugin changes
+- `plugin-name` - Specific plugin changes
+
+### Subject
+
+- Use imperative mood ("add feature" not "added feature")
+- Don't capitalize first letter
+- No period at the end
+- Max 50 characters
+- Be concise and descriptive
+
+### Body (Optional)
+
+- Use imperative mood
+- Include motivation for change
+- Contrast with previous behavior
+- Wrap at 72 characters
+- Separate from subject by blank line
+
+### Examples
+
+```bash
+# Simple feature
+git commit -m "feat(doc-crawler-plugin): add sitemap parser"
+
+# Bug fix with body
+git commit -m "fix(marketplace): resolve plugin name mismatch
+
+Previously the plugin.json name didn't match the marketplace entry,
+causing plugin discovery to fail. Fixed by aligning the names."
+
+# Documentation update
+git commit -m "docs: add commit message convention to claude.md"
+
+# Chore
+git commit -m "chore(deps): update plugin-dev version"
+```
+
 ## Development Workflow
 
 ### 1. Create New Plugin
