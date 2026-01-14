@@ -307,11 +307,11 @@ rm -rf atlas-docs-full/ atlas-config.yaml
 
 ## Advanced Techniques
 
-For advanced scenarios like large sites, dynamic content, authentication, and handling special cases, see [advanced.md](advanced.md).
+For advanced scenarios like large sites, dynamic content, authentication, and handling special cases, see [advanced.md](./advanced.md).
 
 ## Common Issues & Troubleshooting
 
-For detailed troubleshooting including robots.txt blocking, rate limiting, incomplete crawls, and poor content extraction, see [troubleshooting.md](troubleshooting.md).
+For detailed troubleshooting including robots.txt blocking, rate limiting, incomplete crawls, and poor content extraction, see [troubleshooting.md](./troubleshooting.md).
 
 ## Resources
 
