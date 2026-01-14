@@ -1,0 +1,17 @@
+{
+  "name": "epochtime-ai-plugins",
+  "description": "Official Claude Code plugin marketplace by Epochtime AI - A curated collection of plugins to enhance your AI-powered development workflow",
+  "version": "1.0.0",
+  "owner": {
+    "name": "Epochtime AI"
+  },
+  "repository": "https://github.com/EpochTime-AI/cc-plugins",
+  "plugins": [
+    {
+      "name": "doc-crawler-plugin",
+      "source": "./doc-crawler-plugin",
+      "description": "Systematic documentation crawler that converts online documentation into well-structured Claude Code skills",
+      "version": "1.0.0"
+    }
+  ]
+}
