@@ -1,6 +1,9 @@
 {
   "name": "epochtime-ai-plugins",
   "description": "Official Claude Code plugin marketplace by Epochtime AI - A curated collection of plugins to enhance your AI-powered development workflow",
+  "metadata": {
+    "description": "Epochtime AI's official marketplace providing comprehensive plugins for documentation crawling, database schema management with Atlas, and other development tools"
+  },
   "version": "1.0.0",
   "owner": {
     "name": "Epochtime AI",
@@ -15,6 +18,18 @@
       "version": "1.0.0",
       "category": "documentation",
       "keywords": ["documentation", "crawler", "web-scraping", "inform", "skills", "markdown"],
+      "author": {
+        "name": "c_w_xiaohei",
+        "email": "contact@epochtime.ai"
+      }
+    },
+    {
+      "name": "atlas-db-plugin",
+      "source": "./atlas-db-plugin",
+      "description": "Comprehensive Atlas database schema migration tool integration. Learn declarative and versioned workflows, schema definition, CI/CD integration, and ORM support",
+      "version": "1.0.0",
+      "category": "database",
+      "keywords": ["atlas", "database", "migration", "schema", "declarative", "versioned", "cicd", "orm"],
       "author": {
         "name": "c_w_xiaohei",
         "email": "contact@epochtime.ai"
