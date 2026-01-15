@@ -1,6 +1,6 @@
 ---
 name: cicd-integration
-description: Integrate Atlas into GitHub Actions, GitLab CI, and other CI/CD platforms for automated database migrations
+description: This skill should be used when the user asks to "integrate Atlas with CI/CD", "set up GitHub Actions for Atlas", "configure GitLab CI migrations", "automate database migrations", "Atlas in CI pipeline", "Docker with Atlas", "migration approval workflow", "lint migrations in CI", or needs guidance on integrating Atlas into continuous integration and deployment platforms
 ---
 
 # Atlas CI/CD Integration

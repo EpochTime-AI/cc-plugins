@@ -1,6 +1,6 @@
 ---
 name: schema-definition
-description: Write database schemas using Atlas HCL, SQL, or ORM formats with practical examples for tables, indexes, constraints
+description: This skill should be used when the user asks about "Atlas HCL syntax", "define schema in Atlas", "create tables in HCL", "foreign keys in Atlas", "indexes in Atlas", "schema.hcl file", "Atlas data types", "constraints in HCL", "SQL schema definition", "column types in Atlas", or needs guidance on writing database schemas using HCL, SQL, or ORM formats
 ---
 
 # Atlas Schema Definition Guide

@@ -1,6 +1,6 @@
 ---
 name: atlas-concepts
-description: Learn Atlas database schema migration fundamentals, comparing declarative vs versioned workflows and understanding core concepts
+description: This skill should be used when the user asks about "Atlas basics", "declarative vs versioned migrations", "Atlas workflows", "what is Atlas", "how does Atlas work", "Atlas migration approaches", "schema-as-code", "Atlas project setup", or needs an introduction to Atlas database migration concepts and workflow comparison
 ---
 
 # Atlas Database Migration Concepts

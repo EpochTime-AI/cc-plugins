@@ -1,6 +1,6 @@
 ---
 name: migration-workflows
-description: Master Atlas migration commands, planning, applying, and linting migrations for both declarative and versioned workflows
+description: This skill should be used when the user asks about "Atlas migrate commands", "plan migrations", "apply migrations", "lint migrations", "atlas migrate diff", "atlas migrate apply", "rollback migrations", "migration workflow", "versioned migrations", "declarative migrations", "atlas.hcl configuration", or needs guidance on executing Atlas migration commands and workflows
 ---
 
 # Atlas Migration Workflows

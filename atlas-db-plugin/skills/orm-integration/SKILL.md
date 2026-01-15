@@ -1,6 +1,6 @@
 ---
 name: orm-integration
-description: Integrate Atlas with popular ORMs like GORM, Prisma, Sequelize, SQLAlchemy, and TypeORM for automatic schema management
+description: This skill should be used when the user asks to "integrate Atlas with GORM", "use Atlas with Prisma", "Sequelize migrations with Atlas", "SQLAlchemy Atlas integration", "TypeORM and Atlas", "Django with Atlas", "Doctrine migrations", "ORM-driven migrations", "generate migrations from ORM models", or needs guidance on integrating Atlas with popular ORMs for automatic schema management
 ---
 
 # Atlas ORM Integration
