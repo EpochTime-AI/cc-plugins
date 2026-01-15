@@ -34,6 +34,18 @@
         "name": "c_w_xiaohei",
         "email": "contact@epochtime.ai"
       }
+    },
+    {
+      "name": "claude-code-doc-plugin",
+      "source": "./claude-code-doc-plugin",
+      "description": "Complete Claude Code official documentation reference with 48 docs covering setup, plugins, MCP, enterprise deployment, and troubleshooting",
+      "version": "1.0.0",
+      "category": "documentation",
+      "keywords": ["claude-code", "documentation", "reference", "plugins", "mcp", "setup", "enterprise", "troubleshooting"],
+      "author": {
+        "name": "Epochtime AI",
+        "email": "contact@epochtime.ai"
+      }
     }
   ]
 }
