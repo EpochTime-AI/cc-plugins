@@ -1,0 +1,10 @@
+{
+  "name": "atlas-db-plugin",
+  "version": "1.0.0",
+  "description": "Atlas database schema migration tool integration for Claude Code. Provides comprehensive guidance on declarative and versioned migrations, schema-as-code, CI/CD integration, and ORM support.",
+  "author": {
+    "name": "Epochtime AI"
+  },
+  "repository": "https://github.com/EpochTime-AI/cc-plugins",
+  "skills": "./skills/"
+}

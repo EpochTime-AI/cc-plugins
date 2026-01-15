@@ -1,0 +1,17 @@
+# Plugin local settings
+.claude/*.local.md
+
+# Development
+node_modules/
+.DS_Store
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build artifacts
+dist/
+build/
