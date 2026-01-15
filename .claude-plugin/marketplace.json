@@ -26,10 +26,10 @@
     {
       "name": "atlas-db-plugin",
       "source": "./atlas-db-plugin",
-      "description": "Comprehensive Atlas database schema migration tool integration. Learn declarative and versioned workflows, schema definition, CI/CD integration, and ORM support",
-      "version": "1.0.0",
+      "description": "Comprehensive Atlas database schema migration tool integration with LSP support. Learn declarative and versioned workflows, schema definition, CI/CD integration, and ORM support",
+      "version": "1.1.0",
       "category": "database",
-      "keywords": ["atlas", "database", "migration", "schema", "declarative", "versioned", "cicd", "orm"],
+      "keywords": ["atlas", "database", "migration", "schema", "declarative", "versioned", "cicd", "orm", "lsp", "hcl"],
       "author": {
         "name": "c_w_xiaohei",
         "email": "contact@epochtime.ai"

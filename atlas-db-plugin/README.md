@@ -20,6 +20,21 @@ This plugin provides in-depth guides and best practices for using Atlas to manag
 
 5. **ORM Integration** - Connect Atlas with GORM, Prisma, Sequelize, SQLAlchemy, TypeORM, Doctrine, and Django
 
+### LSP Support (Language Server Protocol)
+
+This plugin includes integrated support for the **Atlas Language Server** (`atlas-ls`), providing real-time code intelligence for Atlas HCL schema files:
+
+- **Syntax highlighting** - Rich highlighting for Atlas HCL syntax
+- **Auto-completion** - Intelligent suggestions for Atlas schema elements
+- **Error detection** - Real-time validation of Atlas configuration files
+- **Go-to-definition** - Navigate to schema definitions
+- **Hover information** - Quick documentation lookup
+
+**Supported file patterns:**
+- `*.hcl` - General HCL files
+- `*.atlas.hcl` - Atlas-specific configuration files
+- `atlas.hcl` - Project configuration
+
 ## Quick Start
 
 ### Install the Plugin
@@ -108,11 +123,14 @@ Ask Claude about Atlas topics:
 
 ### Prerequisites
 
-- Atlas CLI installed: https://atlasgo.io/getting-started
+- **Atlas CLI** installed: https://atlasgo.io/getting-started
 - Basic understanding of databases and SQL
 - (Optional) Cloud account for Atlas Cloud features
+- **Atlas Language Server** (`atlas-ls`) for LSP features (optional)
 
 ### Installation Methods
+
+#### Install Atlas CLI
 
 ```bash
 # macOS with Homebrew
@@ -127,6 +145,48 @@ docker pull arigaio/atlas
 # GitHub Actions
 - uses: ariga/setup-atlas@v0
 ```
+
+#### Install Atlas Language Server (Optional - for LSP features)
+
+The Atlas Language Server provides IDE-like code intelligence for Atlas HCL files.
+
+**Automatic installation (VSCode users):**
+
+The [Atlas HCL VSCode Extension](https://marketplace.visualstudio.com/items?itemName=Ariga.atlas-hcl) automatically downloads and configures `atlas-ls`.
+
+**Manual installation:**
+
+The `atlas-ls` binary is distributed from Ariga's release server:
+
+```bash
+# Download for your platform
+# Linux (x86_64)
+curl -L https://release.ariga.io/atlas-ls/atlas-ls-linux-amd64-latest -o atlas-ls
+chmod +x atlas-ls
+sudo mv atlas-ls /usr/local/bin/
+
+# macOS (Intel)
+curl -L https://release.ariga.io/atlas-ls/atlas-ls-darwin-amd64-latest -o atlas-ls
+chmod +x atlas-ls
+sudo mv atlas-ls /usr/local/bin/
+
+# macOS (Apple Silicon)
+curl -L https://release.ariga.io/atlas-ls/atlas-ls-darwin-arm64-latest -o atlas-ls
+chmod +x atlas-ls
+sudo mv atlas-ls /usr/local/bin/
+```
+
+**Verify installation:**
+
+```bash
+# Check if atlas-ls is in your PATH
+which atlas-ls
+
+# Test the language server
+atlas-ls --help
+```
+
+**Note:** If you don't install `atlas-ls`, the plugin will still work perfectly for Atlas documentation and workflows. LSP features are optional enhancements for schema file editing.
 
 ## Common Usage Patterns
 
@@ -185,6 +245,41 @@ Atlas integrates with:
 claude plugin remove atlas-db-plugin
 claude plugin install atlas-db-plugin
 ```
+
+### LSP not working
+
+**Symptom:** No code intelligence for `.hcl` files
+
+**Solution:**
+
+1. **Check if `atlas-ls` is installed:**
+   ```bash
+   which atlas-ls
+   # If not found, install it using the instructions above
+   ```
+
+2. **Verify the binary is executable:**
+   ```bash
+   chmod +x $(which atlas-ls)
+   ```
+
+3. **Check Claude Code LSP errors:**
+   - Run `/plugin` in Claude Code
+   - Switch to "Errors" tab
+   - Look for `atlas-ls` related errors
+
+4. **Common error: "Executable not found in $PATH"**
+   - Make sure `atlas-ls` is in your system PATH
+   - Restart Claude Code after installing `atlas-ls`
+
+5. **Test the language server manually:**
+   ```bash
+   # Start the language server
+   atlas-ls serve
+
+   # Should start without errors
+   # Press Ctrl+C to stop
+   ```
 
 ### Can't find information about specific topic
 - Check "Atlas Concepts" for fundamentals

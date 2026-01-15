@@ -1,0 +1,15 @@
+{
+  "atlas": {
+    "command": "atlas-ls",
+    "args": ["serve"],
+    "extensionToLanguage": {
+      ".hcl": "hcl",
+      ".atlas.hcl": "hcl"
+    },
+    "transport": "stdio",
+    "workspaceFolder": "${CLAUDE_PROJECT_DIR}",
+    "startupTimeout": 10000,
+    "restartOnCrash": true,
+    "maxRestarts": 3
+  }
+}

@@ -1,10 +1,11 @@
 {
   "name": "atlas-db-plugin",
-  "version": "1.0.0",
-  "description": "Atlas database schema migration tool integration for Claude Code. Provides comprehensive guidance on declarative and versioned migrations, schema-as-code, CI/CD integration, and ORM support.",
+  "version": "1.1.0",
+  "description": "Atlas database schema migration tool integration for Claude Code. Provides comprehensive guidance on declarative and versioned migrations, schema-as-code, CI/CD integration, ORM support, and LSP support for Atlas HCL files.",
   "author": {
     "name": "Epochtime AI"
   },
   "repository": "https://github.com/EpochTime-AI/cc-plugins",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "lspServers": "./.lsp.json"
 }
