@@ -195,7 +195,35 @@ The `claude plugin validate` command checks:
 
 ### Automated Validation (Pre-commit Hook)
 
-This repository includes a pre-commit hook that automatically validates the marketplace manifest before each commit.
+This repository includes a pre-commit hook that automatically validates:
+- Marketplace manifest (`.claude-plugin/marketplace.json`)
+- All plugins in the repository (any directory with `.claude-plugin/plugin.json`)
+
+#### Installing the Hook
+
+```bash
+# Copy the pre-commit hook to your git hooks directory
+cp hooks/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+#### What It Does
+
+The hook runs before each commit and:
+1. Validates the marketplace manifest
+2. Discovers all plugin directories (containing `.claude-plugin/`)
+3. Validates each plugin's `plugin.json`
+4. Blocks the commit if any validation fails
+
+Example output:
+```
+🔍 Validating Claude Code marketplace...
+✅ Marketplace validation passed
+🔍 Validating plugin: atlas-db-plugin
+✅ Plugin atlas-db-plugin validation passed
+🔍 Validating plugin: doc-crawler-plugin
+✅ Plugin doc-crawler-plugin validation passed
+```
 
 ## Using This Marketplace
 

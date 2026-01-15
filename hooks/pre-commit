@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Pre-commit hook for Claude Code marketplace and plugin validation
+
+echo "🔍 Validating Claude Code marketplace..."
+
+# Validate marketplace
+if ! claude plugin validate . 2>&1 | grep -q "✔ Validation passed"; then
+    echo "❌ Marketplace validation failed"
+    exit 1
+fi
+echo "✅ Marketplace validation passed"
+
+# Find and validate all plugins
+for dir in */; do
+    plugin_dir="${dir%/}"
+    if [ -d "$plugin_dir/.claude-plugin" ]; then
+        echo "🔍 Validating plugin: $plugin_dir"
+        if ! claude plugin validate "$plugin_dir" 2>&1 | grep -q "✔ Validation passed"; then
+            echo "❌ Plugin $plugin_dir validation failed"
+            exit 1
+        fi
+        echo "✅ Plugin $plugin_dir validation passed"
+    fi
+done
+
+exit 0
