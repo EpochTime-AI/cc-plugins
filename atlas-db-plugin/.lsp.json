@@ -1,7 +1,7 @@
 {
   "atlas": {
     "command": "atlas-ls",
-    "args": ["serve"],
+    "args": ["--stdio"],
     "extensionToLanguage": {
       ".hcl": "hcl",
       ".atlas.hcl": "hcl"
