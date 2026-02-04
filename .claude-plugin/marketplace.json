@@ -33,6 +33,21 @@
       "author": {
         "name": "c_w_xiaohei",
         "email": "contact@epochtime.ai"
+      },
+      "lspServers": {
+        "atlas": {
+          "command": "atlas-ls",
+          "args": ["--stdio"],
+          "extensionToLanguage": {
+            ".hcl": "hcl",
+            ".atlas.hcl": "hcl"
+          },
+          "transport": "stdio",
+          "workspaceFolder": "${CLAUDE_PROJECT_DIR}",
+          "startupTimeout": 10000,
+          "restartOnCrash": true,
+          "maxRestarts": 3
+        }
       }
     },
     {
