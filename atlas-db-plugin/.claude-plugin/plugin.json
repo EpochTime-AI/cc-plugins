@@ -6,6 +6,5 @@
     "name": "Epochtime AI"
   },
   "repository": "https://github.com/EpochTime-AI/cc-plugins",
-  "skills": "./skills/",
-  "lspServers": "./.lsp.json"
+  "skills": "./skills/"
 }
